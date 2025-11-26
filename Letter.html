@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To your crush 💖 — Paper Letter</title>
+  <style>
+    :root {
+      --accent: #e63946;
+      --bg: #ffe6f1;
+      --paper-cream: #fff9f0;
+      --paper-edge: #f0e6da;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #fff 0%, #ffe6f1 100%);
+      -webkit-font-smoothing: antialiased
+    }
+
+    .wrap {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px
+    }
+
+    .container {
+      width: 420px;
+      max-width: 92%;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      text-align: center
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 22px;
+      color: var(--accent)
+    }
+
+    p.emoji {
+      margin: 6px 0 18px 0;
+      font-size: 26px
+    }
+
+    input[type="text"] {
+      width: 84%;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      outline: none;
+      font-size: 16px;
+      text-align: center
+    }
+
+    .btn {
+      width: 88%;
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer
+    }
+
+    .btn:hover {
+      filter: brightness(.95)
+    }
+
+    .alert {
+      margin-top: 16px;
+      display: none;
+      font-size: 14px;
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 8px
+    }
+
+    /* OVERLAY */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease
+    }
+
+    .overlay.open {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    /* PAPER LETTER - textured look */
+    .letter {
+      position: relative;
+      width: 720px;
+      max-width: 95%;
+      max-height: 88%;
+      background:
+        /* subtle paper grain using multiple radial gradients */
+        radial-gradient(circle at 10% 10%, rgba(0, 0, 0, 0.015), transparent 8%),
+        radial-gradient(circle at 90% 25%, rgba(0, 0, 0, 0.01), transparent 6%),
+        radial-gradient(circle at 30% 80%, rgba(0, 0, 0, 0.01), transparent 6%),
+        /* faint vertical fibers */
+        linear-gradient(90deg, rgba(0, 0, 0, 0.01) 0.5px, transparent 0.5px),
+        /* light paper color */
+        var(--paper-cream);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 3px 3px, auto;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+      border-radius: 12px;
+      padding: 48px 56px;
+      overflow: auto;
+      background-image: url("./image/hearts.png");
+      transform-origin: top center;
+      transform: translateY(-10px) scale(.98);
+      transition: transform .25s ease;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .overlay.open .letter {
+      transform: translateY(0) scale(1)
+    }
+
+    /* torn top edge effect */
+    .letter::before {
+      content: "";
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 36px;
+      background:
+        radial-gradient(circle at 5% 40%, var(--paper-edge) 6%, transparent 7%),
+        radial-gradient(circle at 14% 50%, var(--paper-edge) 6%, transparent 7%),
+        radial-gradient(circle at 25% 30%, var(--paper-edge) 6%, transparent 7%),
+        radial-gradient(circle at 40% 55%, var(--paper-edge) 6%, transparent 7%),
+        radial-gradient(circle at 60% 45%, var(--paper-edge) 6%, transparent 7%),
+        radial-gradient(circle at 75% 35%, var(--paper-edge) 6%, transparent 7%),
+        radial-gradient(circle at 88% 50%, var(--paper-edge) 6%, transparent 7%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0));
+      pointer-events: none;
+      transform: translateY(-8px);
+      filter: blur(.2px);
+    }
+
+    /* folded corner */
+    .letter::after {
+      content: "";
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      width: 56px;
+      height: 56px;
+      background:
+        linear-gradient(135deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0)),
+        linear-gradient(225deg, rgba(255, 255, 255, 0.85), transparent 40%);
+      transform: rotate(6deg);
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      pointer-events: none;
+    }
+
+    /* letter header & close */
+    .letter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px
+    }
+
+    .letter h2 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--accent);
+      font-family: "Times New Roman", Georgia, serif
+    }
+
+    .close-btn {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600
+    }
+
+    /* ruled lines effect inside letter body */
+    .letter-body {
+      white-space: pre-wrap;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #222;
+      font-family: "Georgia", "Times New Roman", serif;
+      position: relative;
+      padding: 12px 8px 40px 8px;
+    }
+
+    /* horizontal ruled lines using repeating-linear-gradient */
+    .letter-body::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      top: 8px;
+      bottom: 8px;
+      background-image: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 36px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .letter-body * {
+      position: relative;
+      z-index: 1
+    }
+
+    /* small screens tweak */
+    @media (max-width:480px) {
+      .letter {
+        padding: 22px
+      }
+
+      .letter-body {
+        font-size: 15px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="container" role="main" aria-labelledby="main-title">
+      <h1 id="main-title">Please Enter Your Name</h1>
+      <p class="emoji">&#x1F633;</p>
+      <input id="userName" type="text" placeholder="Your name here" autocomplete="name" />
+      <br />
+      <button class="btn" id="submitBtn">Submit</button>
+      <div id="greetingAlert" class="alert" role="alert"></div>
+    </div>
+  </div>
+
+  <div id="overlay" class="overlay" aria-hidden="true">
+    <div class="letter" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+      <div class="letter-header">
+        <h2 id="letterTitle">A Letter for you</h2>
+        <div>
+          <button id="closeBtn" class="close-btn" aria-label="Close letter">Close ✕</button>
+        </div>
+      </div>
+      <div id="letterBody" class="letter-body" tabindex="0"></div>
+    </div>
+  </div>
+
+  <script>
+    function typeWriterAppend(element, text, speed = 40, callback) {
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          const ch = text.charAt(i);
+          element.innerHTML += ch === "\n" ? "<br>" : ch;
+          i++;
+          setTimeout(type, speed);
+          element.parentElement.scrollTop = element.parentElement.scrollHeight;
+        } else {
+          if (callback) callback();
+        }
+      }
+      type();
+    }
+
+    const template = (name) => {
+      return `Hello, ${name}!\n\nHey, my heart has been whispering something to me, and I think it’s finally time to tell you..... (,,>﹏<,,)\n\nI just can’t stop thinking about how amazing you are.\nYou’re honestly so attractive, but............. it’s more than just that.\n\nThere’s something about you that keeps me thinking about you all the time.\n\nHmmm.\n  hmmmmmm..\n    Uhmmmmmmmmm...\n\nI LIKE YOU 🥰💖\n\nFor so many reasons.\nI like your flaws, your imperfections, and the way they make you so perfectly you. 💖\nI love your personality, your vibe, and how you just light up everything around you. 💖\nYour style is effortless, and your smile... it just makes everything better.💖\n\nI made this code just to show you how deeply I’m in love with you. Every line of it reflects how I feel.🥰\n\nBut no pressure, okay? You don’t have to feel the same way. I just needed to get this off my chest for my own peace of mind.\n\nTake care. 😊💖`;
+    };
+
+    const submitBtn = document.getElementById("submitBtn");
+    const userNameInput = document.getElementById("userName");
+    const overlay = document.getElementById("overlay");
+    const letterBody = document.getElementById("letterBody");
+    const closeBtn = document.getElementById("closeBtn");
+    const greetingAlert = document.getElementById("greetingAlert");
+
+    function openLetter(name) {
+      letterBody.innerHTML = "";
+      overlay.classList.add("open");
+      overlay.setAttribute("aria-hidden", "false");
+      setTimeout(() => letterBody.focus(), 260);
+      const full = template(name);
+      typeWriterAppend(letterBody, `Dear ${name},\n\n`, 60, function () {
+        setTimeout(function () {
+          typeWriterAppend(letterBody, full.replace(`Hello, ${name}!\n\n`, ""), 35);
+        }, 450);
+      });
+    }
+
+    function closeLetter() {
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden", "true");
+      userNameInput.focus();
+    }
+
+    function handleSubmit() {
+      const name = userNameInput.value.trim();
+      if (!name) {
+        greetingAlert.textContent = "Please enter your name.";
+        greetingAlert.style.backgroundColor = "#dc3545";
+        greetingAlert.style.display = "block";
+        setTimeout(() => greetingAlert.style.display = "none", 2500);
+        userNameInput.focus();
+        return;
+      }
+      greetingAlert.style.display = "none";
+      openLetter(name);
+    }
+
+    submitBtn.addEventListener("click", handleSubmit);
+    userNameInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") handleSubmit();
+    });
+    closeBtn.addEventListener("click", closeLetter);
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) closeLetter();
+    });
+    document.addEventListener("keydown", function (e) {
+      if ((e.key === "Escape") && overlay.classList.contains("open")) {
+        closeLetter();
+      }
+    });
+  </script>
+</body>
+
+</html>
