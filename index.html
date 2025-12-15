@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Paper Letter</title>
+
   <style>
     :root {
       --accent: #e63946;
@@ -13,13 +14,21 @@
       --paper-edge: #f0e6da;
     }
 
-    html,
-    body {
+    html, body {
       height: 100%;
       margin: 0;
       font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg, #fff 0%, #ffe6f1 100%);
-      -webkit-font-smoothing: antialiased;
+      background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 230, 241, 0.85)
+    ),
+    url("./image/baby2.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
     }
 
     .wrap {
@@ -33,79 +42,67 @@
     .container {
       width: 420px;
       max-width: 92%;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255,255,255,0.95);
       border-radius: 12px;
       padding: 28px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
       text-align: center;
     }
 
     h1 {
-      margin: 0 0 8px 0;
-      font-size: 22px;
+      margin-bottom: 10px;
       color: var(--accent);
     }
 
-    p.emoji {
-      margin: 6px 0 18px 0;
-      font-size: 26px;
-    }
-
-    input[type="text"] {
-      width: 84%;
-      padding: 10px 12px;
+    input {
+      width: 85%;
+      padding: 10px;
       border-radius: 999px;
       border: 2px solid var(--accent);
-      outline: none;
-      font-size: 16px;
       text-align: center;
+      font-size: 16px;
+      outline: none;
     }
 
     .btn {
-      width: 88%;
       margin-top: 14px;
-      padding: 10px 12px;
-      border-radius: 8px;
+      width: 90%;
+      padding: 10px;
       border: none;
+      border-radius: 8px;
       background: var(--accent);
-      color: #fff;
-      font-weight: 600;
+      color: white;
+      font-weight: bold;
       cursor: pointer;
     }
 
-    .btn:hover {
-      filter: brightness(.95);
-    }
-
     .credit {
-      margin-top: 12px;
+      margin-top: 10px;
       font-size: 12px;
-      color: #555;
+      opacity: .7;
       font-style: italic;
-      opacity: 0.75;
     }
 
     .alert {
-      margin-top: 16px;
+      margin-top: 12px;
+      padding: 8px;
+      color: white;
       display: none;
-      font-size: 14px;
-      color: #fff;
-      padding: 8px 10px;
       border-radius: 8px;
+      font-size: 14px;
     }
 
     /* OVERLAY */
     .overlay {
       position: fixed;
       inset: 0;
+      background: rgba(0,0,0,.45);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.45);
-      z-index: 1000;
       opacity: 0;
       pointer-events: none;
-      transition: opacity .25s ease;
+      transition: .25s;
     }
 
     .overlay.open {
@@ -113,271 +110,173 @@
       pointer-events: auto;
     }
 
-    /* PAPER LETTER */
-    .letter {
+   .letter {
       position: relative;
       width: 720px;
       max-width: 95%;
       max-height: 88%;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(0, 0, 0, 0.015), transparent 8%),
-        radial-gradient(circle at 90% 25%, rgba(0, 0, 0, 0.01), transparent 6%),
-        radial-gradient(circle at 30% 80%, rgba(0, 0, 0, 0.01), transparent 6%),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.01) 0.5px, transparent 0.5px),
-        var(--paper-cream);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 3px 3px, auto;
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
-      border-radius: 12px;
       padding: 48px 56px;
       overflow: auto;
+      border-radius: 12px;
+
+      background:
+        radial-gradient(circle at 10% 10%, rgba(0,0,0,.015), transparent 8%),
+        radial-gradient(circle at 90% 25%, rgba(0,0,0,.01), transparent 6%),
+        radial-gradient(circle at 30% 80%, rgba(0,0,0,.01), transparent 6%),
+        linear-gradient(90deg, rgba(0,0,0,.01) 0.5px, transparent 0.5px),
+        var(--paper-cream);
+
       background-image: url("./image/baby2.png");
-      transform-origin: top center;
+      background-size: cover;
+      background-position: center;
+
+      box-shadow: 0 30px 70px rgba(0,0,0,.45);
       transform: translateY(-10px) scale(.98);
-      transition: transform .25s ease;
-      border: 1px solid rgba(0, 0, 0, 0.06);
+      transition: .25s;
     }
 
     .overlay.open .letter {
       transform: translateY(0) scale(1);
     }
 
-    .letter::before {
-      content: "";
-      position: absolute;
-      top: -18px;
-      left: 0;
-      right: 0;
-      height: 36px;
-      background:
-        radial-gradient(circle at 5% 40%, var(--paper-edge) 6%, transparent 7%),
-        radial-gradient(circle at 14% 50%, var(--paper-edge) 6%, transparent 7%),
-        radial-gradient(circle at 25% 30%, var(--paper-edge) 6%, transparent 7%),
-        radial-gradient(circle at 40% 55%, var(--paper-edge) 6%, transparent 7%),
-        radial-gradient(circle at 60% 45%, var(--paper-edge) 6%, transparent 7%),
-        radial-gradient(circle at 75% 35%, var(--paper-edge) 6%, transparent 7%),
-        radial-gradient(circle at 88% 50%, var(--paper-edge) 6%, transparent 7%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0));
-      pointer-events: none;
-      transform: translateY(-8px);
-      filter: blur(.2px);
-    }
-
-    .letter::after {
-      content: "";
-      position: absolute;
-      right: 18px;
-      bottom: 18px;
-      width: 56px;
-      height: 56px;
-      background:
-        linear-gradient(135deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0)),
-        linear-gradient(225deg, rgba(255, 255, 255, 0.85), transparent 40%);
-      transform: rotate(6deg);
-      border-radius: 6px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-      pointer-events: none;
-    }
-
     .letter-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .letter h2 {
-      margin: 0;
-      font-size: 20px;
       color: var(--accent);
-      font-family: "Times New Roman", Georgia, serif;
+      font-family: "Times New Roman", serif;
     }
 
     .close-btn {
-      background: transparent;
       border: 2px solid var(--accent);
+      background: transparent;
       color: var(--accent);
       padding: 6px 10px;
       border-radius: 8px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: bold;
     }
 
     .letter-body {
-      white-space: pre-wrap;
+      font-family: "Georgia", "Times New Roman", serif;
       font-size: 17px;
       line-height: 1.7;
-      color: #000000;
-      font-family: "Georgia", "Times New Roman", serif;
-      position: relative;
-      padding: 12px 8px 40px 8px;
-    }
-
-    .letter-body::before {
-      content: "";
-      position: absolute;
-      left: 8px;
-      right: 8px;
-      top: 8px;
-      bottom: 8px;
-      background-image: repeating-linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.03) 0px,
-        rgba(0, 0, 0, 0.03) 1px,
-        transparent 1px,
-        transparent 36px
-      );
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .letter-body * {
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (max-width:480px) {
-      .letter {
-        padding: 22px;
-      }
-
-      .letter-body {
-        font-size: 15px;
-      }
+      white-space: pre-wrap;
+      color: #000;
     }
   </style>
 </head>
 
 <body>
+
   <div class="wrap">
-    <div class="container" role="main" aria-labelledby="main-title">
-      <h1 id="main-title">Please Enter Your Name</h1>
-      <p class="emoji">&#x1F633;</p>
-      <input id="userName" type="text" placeholder="Your name here" autocomplete="name" />
-      <br />
+    <div class="container">
+      <h1>Please Enter Your Name</h1>
+      <p style="font-size:26px;">😳</p>
+      <input id="userName" placeholder="Your name here" />
       <button class="btn" id="submitBtn">Submit</button>
       <p class="credit">Created by Mark your lucky boyfriend</p>
-      <div id="greetingAlert" class="alert" role="alert"></div>
+      <div id="greetingAlert" class="alert"></div>
     </div>
   </div>
 
-  <div id="overlay" class="overlay" aria-hidden="true">
-    <div class="letter" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+  <!-- OVERLAY LETTER -->
+  <div id="overlay" class="overlay">
+    <div class="letter">
       <div class="letter-header">
-        <h2 id="letterTitle">A Letter for you</h2>
-        <div>
-          <button id="closeBtn" class="close-btn" aria-label="Close letter">Close ✕</button>
-        </div>
+        <h2>A Letter for you</h2>
+        <button id="closeBtn" class="close-btn">Close ✕</button>
       </div>
-      <div id="letterBody" class="letter-body" tabindex="0"></div>
+      <div id="letterBody" class="letter-body"></div>
     </div>
   </div>
+
+  <!-- 🎵 BACKGROUND MUSIC -->
+  <audio id="bgMusic" preload="auto">
+    <source src="./image/Aerosmith - I Don't Want to Miss a Thing (Lyrics)-[AudioTrimmer.com].mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     let typingTimers = [];
+    const bgMusic = document.getElementById("bgMusic");
 
     function cancelTyping() {
-      typingTimers.forEach(id => clearTimeout(id));
+      typingTimers.forEach(t => clearTimeout(t));
       typingTimers = [];
     }
 
-    function typeWriterAppend(element, text, speed = 40, callback) {
+    function typeWriter(el, text, speed = 35) {
       let i = 0;
-      function type() {
+      function run() {
         if (i < text.length) {
-          const ch = text.charAt(i);
-          element.innerHTML += ch === "\n" ? "<br>" : ch;
+          el.innerHTML += text[i] === "\n" ? "<br>" : text[i];
           i++;
-          const id = setTimeout(type, speed);
-          typingTimers.push(id);
-          element.parentElement.scrollTop = element.parentElement.scrollHeight;
-        } else {
-          if (callback) callback();
+          typingTimers.push(setTimeout(run, speed));
         }
       }
-      type();
+      run();
     }
 
-    const template = (name) => {
-  return `Good morning babe, I love you so much, walang araw na hindi kita naiisip, hindi ko kayang matiis na hindi ka makausap sa loob ng isang araw, yes po nahihirapan ako inaamin ko pero hindi ako mapapagod na mahalin ka ng sobra pa sa sobra kasi deserve mo na mahalin ka ng sobra pa sa sobra, napaka genuine ng puso mo, at napaka swerte ko at na win ko yun girlfriend ko yung maganda sa School namin o, from highschool na nag kakadaanan lang nag kikita pero di nila alam na sila pala pag dating ng panahon to kakilala pala sya ng kapatid ko to studyante ko na naging crush ko ng matagal torpe lang ako to naging girlfriend ko to my future wife, My future wife mahal na mahal kita, sa anak natin Samantha, Kyrie wait natin si mommy ha kakayanin ni daddy para sa inyong tatlo nila mommy can't wait to tell you two the story of daddy and mommy, and to my wife Ms. Lyanna Paula Tuico - Autria, please wag kang mapapagod sakin ha, mahirap ang situation natin alam natin parehas yun wag kang mapapagod okay? laban lang tayo asawa ko laban lang kakayanin natin to, this is a test form God, wag sana mabago ang feelings mo para sakin hanggang sa maka graduate ka mahal ko dahil hinding hindi magbabago yung sakin, ikaw at ikaw parin walang iba, 6 months lang naman yun kayang kaya natin yun babe kaya hiling ko lang wag ka pong mapapagod okay babe? mahal na mahall na mahal kita palagi hindi mag babago yun, the time if you reading this letter just smile okay I'm here to support you to cheer you to love you habang nabubuhay ako ipaparamdam ko sayo araw araw yung love ko sayo at araw araw kitang liligawan hindi mag babago yun. again I LOVE YOU MY ASAWA, BABE, BABY, MOMMY, MAHAL!!😘😘😘❤️❤️`;
-
-    };
+    const template = (name) => `Good morning babe, I love you so much, walang araw na hindi kita naiisip, hindi ko kayang matiis na hindi ka makausap sa loob ng isang araw, yes po nahihirapan ako inaamin ko pero hindi ako mapapagod na mahalin ka ng sobra pa sa sobra kasi deserve mo na mahalin ka ng sobra pa sa sobra, napaka genuine ng puso mo, at napaka swerte ko at na win ko yun girlfriend ko yung maganda sa School namin o, from highschool na nag kakadaanan lang nag kikita pero di nila alam na sila pala pag dating ng panahon to kakilala pala sya ng kapatid ko to studyante ko na naging crush ko ng matagal torpe lang ako to naging girlfriend ko to my future wife, My future wife mahal na mahal kita, sa anak natin Samantha, Kyrie wait natin si mommy ha kakayanin ni daddy para sa inyong tatlo nila mommy can't wait to tell you two the story of daddy and mommy, and to my wife Ms. Lyanna Paula Tuico - Autria, please wag kang mapapagod sakin ha, mahirap ang situation natin alam natin parehas yun wag kang mapapagod okay? laban lang tayo asawa ko laban lang kakayanin natin to, this is a test form God, wag sana mabago ang feelings mo para sakin hanggang sa maka graduate ka mahal ko dahil hinding hindi magbabago yung sakin, ikaw at ikaw parin walang iba, 6 months lang naman yun kayang kaya natin yun babe kaya hiling ko lang wag ka pong mapapagod okay babe? mahal na mahall na mahal kita palagi hindi mag babago yun, the time if you reading this letter just smile okay I'm here to support you to cheer you to love you habang nabubuhay ako ipaparamdam ko sayo araw araw yung love ko sayo at araw araw kitang liligawan hindi mag babago yun. again I LOVE YOU MY ASAWA, BABE, BABY, MOMMY, MAHAL!!😘😘😘❤️❤️`;
 
     const submitBtn = document.getElementById("submitBtn");
     const userNameInput = document.getElementById("userName");
     const overlay = document.getElementById("overlay");
     const letterBody = document.getElementById("letterBody");
     const closeBtn = document.getElementById("closeBtn");
-    const greetingAlert = document.getElementById("greetingAlert");
+    const alertBox = document.getElementById("greetingAlert");
+
+    function fadeInMusic(audio) {
+      audio.currentTime = 0;
+      audio.volume = 0;
+      audio.play();
+      let v = 0;
+      const fade = setInterval(() => {
+        v += 0.05;
+        audio.volume = Math.min(v, 0.5);
+        if (v >= 0.5) clearInterval(fade);
+      }, 150);
+    }
 
     function openLetter(name) {
       cancelTyping();
       letterBody.innerHTML = "";
-
       overlay.classList.add("open");
-      overlay.setAttribute("aria-hidden", "false");
-      setTimeout(() => letterBody.focus(), 260);
 
-      const full = template(name);
+      fadeInMusic(bgMusic);
 
-      typeWriterAppend(letterBody, `Dear ${name},\n\n`, 60, function () {
-        setTimeout(function () {
-          typeWriterAppend(
-            letterBody,
-            full.replace(`Hello, ${name}!\n\n`, ""),
-            35
-          );
-        }, 450);
-      });
+      typeWriter(letterBody, `Dear ${name},\n\n${template(name)}`);
     }
 
     function closeLetter() {
       cancelTyping();
       overlay.classList.remove("open");
-      overlay.setAttribute("aria-hidden", "true");
-      userNameInput.focus();
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
     }
 
     function handleSubmit() {
       const name = userNameInput.value.trim();
-      const validNames = ["Lyanna", "lyanna", "Lian", "lian", "Babe", "babe"];
+      const allowed = ["Lyanna", "lyanna", "Lian", "lian", "Babe", "babe"];
 
-      if (!name) {
-        greetingAlert.textContent = "Please enter your name.";
-        greetingAlert.style.backgroundColor = "#dc3545";
-        greetingAlert.style.display = "block";
-        setTimeout(() => greetingAlert.style.display = "none", 2500);
-        userNameInput.focus();
+      if (!name || !allowed.includes(name)) {
+        alertBox.textContent = "Access Denied 😝";
+        alertBox.style.background = "#dc3545";
+        alertBox.style.display = "block";
+        setTimeout(() => alertBox.style.display = "none", 2000);
         return;
       }
-
-      if (!validNames.includes(name)) {
-        greetingAlert.textContent = "Access Denied:😝";
-        greetingAlert.style.backgroundColor = "#dc3545";
-        greetingAlert.style.display = "block";
-        setTimeout(() => greetingAlert.style.display = "none", 2500);
-        userNameInput.focus();
-        return;
-      }
-
-      greetingAlert.style.display = "none";
       openLetter(name);
     }
 
-    submitBtn.addEventListener("click", handleSubmit);
-    userNameInput.addEventListener("keydown", function (e) {
-      if (e.key === "Enter") handleSubmit();
-    });
-    closeBtn.addEventListener("click", closeLetter);
-    overlay.addEventListener("click", function (e) {
-      if (e.target === overlay) closeLetter();
-    });
-    document.addEventListener("keydown", function (e) {
-      if ((e.key === "Escape") && overlay.classList.contains("open")) {
-        closeLetter();
-      }
-    });
+    submitBtn.onclick = handleSubmit;
+    closeBtn.onclick = closeLetter;
+    overlay.onclick = e => e.target === overlay && closeLetter();
   </script>
-</body>
 
+</body>
 </html>
