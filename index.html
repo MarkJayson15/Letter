@@ -19,16 +19,15 @@
       margin: 0;
       font-family: "Segoe UI", Roboto, Arial, sans-serif;
       background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.75),
-      rgba(255, 230, 241, 0.85)
-    ),
-    url("./image/baby2.png");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+        linear-gradient(
+          rgba(255, 255, 255, 0.75),
+          rgba(255, 230, 241, 0.85)
+        ),
+        url("./image/baby2.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
 
     .wrap {
@@ -92,7 +91,6 @@
       font-size: 14px;
     }
 
-    /* OVERLAY */
     .overlay {
       position: fixed;
       inset: 0;
@@ -110,7 +108,7 @@
       pointer-events: auto;
     }
 
-   .letter {
+    .letter {
       position: relative;
       width: 720px;
       max-width: 95%;
@@ -178,13 +176,15 @@
       <h1>Please Enter Your Name</h1>
       <p style="font-size:26px;">😳</p>
       <input id="userName" placeholder="Your name here" />
+
       <button class="btn" id="submitBtn">Submit</button>
+      <button class="btn" id="openNewBtn">Open New Letter 💌</button>
+
       <p class="credit">Created by Mark your lucky boyfriend</p>
       <div id="greetingAlert" class="alert"></div>
     </div>
   </div>
 
-  <!-- OVERLAY LETTER -->
   <div id="overlay" class="overlay">
     <div class="letter">
       <div class="letter-header">
@@ -195,7 +195,6 @@
     </div>
   </div>
 
-  <!-- 🎵 BACKGROUND MUSIC -->
   <audio id="bgMusic" preload="auto">
     <source src="./image/Aerosmith - I Don't Want to Miss a Thing (Lyrics)-[AudioTrimmer.com].mp3" type="audio/mpeg">
   </audio>
@@ -203,6 +202,14 @@
   <script>
     let typingTimers = [];
     const bgMusic = document.getElementById("bgMusic");
+
+    const submitBtn = document.getElementById("submitBtn");
+    const openNewBtn = document.getElementById("openNewBtn");
+    const userNameInput = document.getElementById("userName");
+    const overlay = document.getElementById("overlay");
+    const letterBody = document.getElementById("letterBody");
+    const closeBtn = document.getElementById("closeBtn");
+    const alertBox = document.getElementById("greetingAlert");
 
     function cancelTyping() {
       typingTimers.forEach(t => clearTimeout(t));
@@ -221,14 +228,11 @@
       run();
     }
 
-    const template = (name) => `Good morning babe, I love you so much, walang araw na hindi kita naiisip, hindi ko kayang matiis na hindi ka makausap sa loob ng isang araw, yes po nahihirapan ako inaamin ko pero hindi ako mapapagod na mahalin ka ng sobra pa sa sobra kasi deserve mo na mahalin ka ng sobra pa sa sobra, napaka genuine ng puso mo, at napaka swerte ko at na win ko yun girlfriend ko yung maganda sa School namin o, from highschool na nag kakadaanan lang nag kikita pero di nila alam na sila pala pag dating ng panahon to kakilala pala sya ng kapatid ko to studyante ko na naging crush ko ng matagal torpe lang ako to naging girlfriend ko to my future wife, My future wife mahal na mahal kita, sa anak natin Samantha, Kyrie wait natin si mommy ha kakayanin ni daddy para sa inyong tatlo nila mommy can't wait to tell you two the story of daddy and mommy, and to my wife Ms. Lyanna Paula Tuico - Autria, please wag kang mapapagod sakin ha, mahirap ang situation natin alam natin parehas yun wag kang mapapagod okay? laban lang tayo asawa ko laban lang kakayanin natin to, this is a test form God, wag sana mabago ang feelings mo para sakin hanggang sa maka graduate ka mahal ko dahil hinding hindi magbabago yung sakin, ikaw at ikaw parin walang iba, 6 months lang naman yun kayang kaya natin yun babe kaya hiling ko lang wag ka pong mapapagod okay babe? mahal na mahal na mahal kita palagi hindi mag babago yun, the time if you reading this letter just smile okay I'm here to support you to cheer you to love you habang nabubuhay ako ipaparamdam ko sayo araw araw yung love ko sayo at araw araw kitang liligawan hindi mag babago yun. again I LOVE YOU MY ASAWA, BABE, BABY, MOMMY, MAHAL!!😘😘😘❤️❤️`;
+    /* ===== LETTER CONTENTS ===== */
 
-    const submitBtn = document.getElementById("submitBtn");
-    const userNameInput = document.getElementById("userName");
-    const overlay = document.getElementById("overlay");
-    const letterBody = document.getElementById("letterBody");
-    const closeBtn = document.getElementById("closeBtn");
-    const alertBox = document.getElementById("greetingAlert");
+    const oldLetter = (name) => `Good morning babe, I love you so much, walang araw na hindi kita naiisip, hindi ko kayang matiis na hindi ka makausap sa loob ng isang araw, yes po nahihirapan ako inaamin ko pero hindi ako mapapagod na mahalin ka ng sobra pa sa sobra kasi deserve mo na mahalin ka ng sobra pa sa sobra, napaka genuine ng puso mo, at napaka swerte ko at na win ko yun girlfriend ko yung maganda sa School namin o, from highschool na nag kakadaanan lang nag kikita pero di nila alam na sila pala pag dating ng panahon to kakilala pala sya ng kapatid ko to studyante ko na naging crush ko ng matagal torpe lang ako to naging girlfriend ko to my future wife, My future wife mahal na mahal kita, sa anak natin Samantha, Kyrie wait natin si mommy ha kakayanin ni daddy para sa inyong tatlo nila mommy can't wait to tell you two the story of daddy and mommy, and to my wife Ms. Lyanna Paula Tuico - Autria, please wag kang mapapagod sakin ha, mahirap ang situation natin alam natin parehas yun wag kang mapapagod okay? laban lang tayo asawa ko laban lang kakayanin natin to, this is a test form God, wag sana mabago ang feelings mo para sakin hanggang sa maka graduate ka mahal ko dahil hinding hindi magbabago yung sakin, ikaw at ikaw parin walang iba, 6 months lang naman yun kayang kaya natin yun babe kaya hiling ko lang wag ka pong mapapagod okay babe? mahal na mahal na mahal kita palagi hindi mag babago yun, the time if you reading this letter just smile okay I'm here to support you to cheer you to love you habang nabubuhay ako ipaparamdam ko sayo araw araw yung love ko sayo at araw araw kitang liligawan hindi mag babago yun. again I LOVE YOU MY ASAWA, BABE, BABY, MOMMY, MAHAL!!😘😘😘❤️❤️`;
+
+    const newLetter = (name) => `Hi babe Im writing this letter to tell you how musch I love you and how much you mean to me. and marami akong gustong ikwento sayo kaya sana magkita ulit tayong dalawa, miss na miss na kita sobra, sobra na hindi ko na matiis, tapos hindi pa tayo makapag usap ng maayos ngayon, natatakot ako na baka masanay ka sa ganyan babe, hindi ko kakayanin babe, alam mo kung gaano ka kaimportante sakin hindi ko kaya na mawala ka, ito legit ito feeling ko kasi parang sinasanay mo na ako na mawawala ka na iiwasan mo na ako babe, please lang wag moko iwan babe dahil ikaw lang ang gusto ko makasama sa pag tanda ikaw ang gusto pakasalan, ikaw yung gusto ko na makikita na mag lalakad sa aisle ng simbahan papunta sakin sa altar please be my soon to be wife, pangako ko na gagawin ko lahat para mapasaya kita, maalagaan ka at ipaparamdam ko sayo araw araw na liligawan kita. to be continue... this letter is in progress please wait for MARK to finish this letter for you my love`;
 
     function fadeInMusic(audio) {
       audio.currentTime = 0;
@@ -242,14 +246,12 @@
       }, 150);
     }
 
-    function openLetter(name) {
+    function openLetter(name, content) {
       cancelTyping();
       letterBody.innerHTML = "";
       overlay.classList.add("open");
-
       fadeInMusic(bgMusic);
-
-      typeWriter(letterBody, `Dear ${name},\n\n${template(name)}`);
+      typeWriter(letterBody, `Dear ${name},\n\n${content}`);
     }
 
     function closeLetter() {
@@ -259,7 +261,7 @@
       bgMusic.currentTime = 0;
     }
 
-    function handleSubmit() {
+    function validateName(callback) {
       const name = userNameInput.value.trim();
       const allowed = ["Lyanna", "lyanna", "Lian", "lian", "Babe", "babe"];
 
@@ -270,10 +272,15 @@
         setTimeout(() => alertBox.style.display = "none", 2000);
         return;
       }
-      openLetter(name);
+      callback(name);
     }
 
-    submitBtn.onclick = handleSubmit;
+    submitBtn.onclick = () =>
+      validateName(name => openLetter(name, oldLetter(name)));
+
+    openNewBtn.onclick = () =>
+      validateName(name => openLetter(name, newLetter(name)));
+
     closeBtn.onclick = closeLetter;
     overlay.onclick = e => e.target === overlay && closeLetter();
   </script>
