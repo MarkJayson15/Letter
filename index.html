@@ -920,6 +920,145 @@
       font-weight: 500;
     }
 
+    .letter-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 34px;
+    }
+
+    .close-letter-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 50px;
+      padding: 13px 24px;
+      border: 1px solid rgba(123, 41, 65, .16);
+      border-radius: 999px;
+      color: var(--wine);
+      background: rgba(255, 255, 255, .82);
+      box-shadow: 0 12px 30px rgba(73, 25, 40, .1);
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: .86rem;
+      font-weight: 800;
+      letter-spacing: .03em;
+      transition: transform .25s ease, color .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+
+    .close-letter-btn:hover {
+      color: #fff;
+      background: linear-gradient(135deg, var(--wine-dark), var(--rose));
+      box-shadow: 0 16px 35px rgba(86, 27, 44, .22);
+      transform: translateY(-3px);
+    }
+
+    .closing-screen {
+      position: fixed;
+      z-index: 100;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      visibility: hidden;
+      opacity: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(246, 180, 198, .3), transparent 28rem),
+        radial-gradient(circle at 80% 80%, rgba(255, 222, 198, .22), transparent 30rem),
+        rgba(48, 15, 25, .94);
+      backdrop-filter: blur(14px);
+      transition: opacity .45s ease, visibility .45s ease;
+    }
+
+    .closing-screen.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .closing-card {
+      position: relative;
+      width: min(540px, 100%);
+      padding: clamp(38px, 8vw, 66px) clamp(24px, 7vw, 54px);
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 34px;
+      color: #fff;
+      background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+      box-shadow: 0 30px 80px rgba(20, 5, 10, .35);
+      text-align: center;
+      overflow: hidden;
+      transform: translateY(22px) scale(.96);
+      transition: transform .55s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .closing-screen.show .closing-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .closing-heart {
+      display: grid;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 22px;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, var(--rose), #e99bad);
+      box-shadow: 0 15px 35px rgba(226, 119, 147, .32);
+      font-size: 2rem;
+      animation: heartbeat 1.2s ease-in-out infinite;
+    }
+
+    .closing-card small {
+      display: block;
+      margin-bottom: 8px;
+      color: #f2b9c7;
+      font-family: var(--sans);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .closing-card h3 {
+      margin: 0;
+      font-size: clamp(2.35rem, 8vw, 4rem);
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .closing-card p {
+      margin: 14px 0 0;
+      color: rgba(255,255,255,.82);
+      font-family: var(--sans);
+      font-size: clamp(.95rem, 2vw, 1.08rem);
+      line-height: 1.7;
+    }
+
+    .closing-card p strong {
+      color: #fff;
+    }
+
+    .closing-sparkle {
+      position: absolute;
+      color: rgba(255,255,255,.32);
+      font-size: 2rem;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    .closing-sparkle.one { top: 22px; left: 28px; }
+    .closing-sparkle.two { right: 30px; bottom: 24px; animation-delay: -.8s; }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      35% { transform: scale(1.12); }
+      55% { transform: scale(.98); }
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: .25; transform: rotate(0deg) scale(.8); }
+      50% { opacity: .8; transform: rotate(12deg) scale(1.15); }
+    }
+
     @keyframes arrive {
       from {
         opacity: 0;
@@ -1418,9 +1557,23 @@
           <p class="final-love">I LOVE YOU, BABYYYYYYY! ♥</p>
         </div>
         <footer class="signature">Forever yours,<strong>Your lucky boyfriend ♥</strong></footer>
+        <div class="letter-actions">
+          <button id="closeLetterBtn" class="close-letter-btn" type="button">Close letter <span aria-hidden="true">♡</span></button>
+        </div>
       </article>
     </section>
   </main>
+
+  <div id="closingScreen" class="closing-screen" aria-hidden="true" role="status" aria-live="polite">
+    <div class="closing-card">
+      <span class="closing-sparkle one" aria-hidden="true">✿</span>
+      <span class="closing-sparkle two" aria-hidden="true">♡</span>
+      <div class="closing-heart" aria-hidden="true">♥</div>
+      <small>Until you open this again</small>
+      <h3>Thank you.</h3>
+      <p>Thank you for reading my heart.<br><strong>I love you, always. ♡</strong></p>
+    </div>
+  </div>
 
   <audio id="bgMusic" preload="auto" loop>
     <source src="./Dionela%20-%20Musika%20(Chorus%20Start).mp3" type="audio/mpeg">
@@ -1435,7 +1588,10 @@
     const salutation = document.getElementById("salutation");
     const music = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicBtn");
+    const closeLetterBtn = document.getElementById("closeLetterBtn");
+    const closingScreen = document.getElementById("closingScreen");
     let fadeTimer;
+    let closeTimer;
 
     function startMusic() {
       clearInterval(fadeTimer);
@@ -1488,6 +1644,34 @@
         musicBtn.textContent = "♫ Music off";
         musicBtn.setAttribute("aria-label", "Play background music");
       }
+    });
+
+    function returnToLanding() {
+      clearTimeout(closeTimer);
+      clearInterval(fadeTimer);
+      music.pause();
+      music.currentTime = 0;
+      music.volume = 1;
+      musicBtn.textContent = "♫ Music on";
+      musicBtn.setAttribute("aria-label", "Pause background music");
+      closingScreen.classList.remove("show");
+      closingScreen.setAttribute("aria-hidden", "true");
+      letterView.classList.remove("open");
+      letterView.setAttribute("aria-hidden", "true");
+      gate.classList.remove("hidden");
+      document.body.style.background = "";
+      input.value = "";
+      message.textContent = "";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(() => input.focus(), 500);
+    }
+
+    closeLetterBtn.addEventListener("click", () => {
+      clearInterval(fadeTimer);
+      music.pause();
+      closingScreen.classList.add("show");
+      closingScreen.setAttribute("aria-hidden", "false");
+      closeTimer = setTimeout(returnToLanding, 3200);
     });
 
     const revealItems = document.querySelectorAll(
