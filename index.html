@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#381922">
-  <title>A Letter for My Love</title>
+  <title>May I Court You?</title>
   <style>
     :root {
       --wine: #7b2941;
@@ -63,8 +63,9 @@
       place-items: center;
       padding: clamp(24px, 5vw, 64px) 18px;
       background:
-        linear-gradient(115deg, rgba(30, 9, 16, .88), rgba(74, 20, 38, .58)),
-        url("./image/313b9374-792f-4df7-a59f-a1dac76de555.jpg") center 32% / cover;
+        radial-gradient(circle at 78% 18%, rgba(238, 154, 177, .18), transparent 28%),
+        radial-gradient(circle at 14% 84%, rgba(255, 226, 204, .1), transparent 30%),
+        linear-gradient(135deg, #251018, #5c1d34 55%, #33131f);
       transition: opacity .65s ease, visibility .65s ease;
       overflow: hidden;
     }
@@ -618,17 +619,17 @@
     }
 
     .chapter--beginning {
-      grid-column: span 7;
+      grid-column: span 6;
       background: linear-gradient(145deg, rgba(255, 255, 255, .9), rgba(250, 232, 237, .72));
     }
 
     .chapter--everyday {
-      grid-column: span 8;
+      grid-column: span 6;
       background: linear-gradient(145deg, rgba(255, 250, 246, .94), rgba(255, 255, 255, .78));
     }
 
     .chapter--promise {
-      grid-column: span 8;
+      grid-column: 1 / -1;
       background: linear-gradient(135deg, rgba(245, 220, 227, .78), rgba(255, 250, 246, .9));
     }
 
@@ -1407,18 +1408,18 @@
   <main>
     <section id="gate" class="gate" aria-labelledby="gateTitle">
       <div class="envelope-wrap">
-        <p class="eyebrow">A little something from my heart</p>
+        <p class="eyebrow">A sincere question from my heart</p>
         <div class="envelope">
           <div class="seal" aria-hidden="true">♥</div>
-          <h1 id="gateTitle">For my love</h1>
-          <p class="intro">There are words meant only for you. Please input your nickname or first name.</p>
+          <h1 id="gateTitle">For someone special</h1>
+          <p class="intro">May gusto sana akong sabihin sa'yo. Please input your nickname or first name.</p>
           <form id="nameForm" class="name-field" novalidate>
             <input id="userName" type="text" autocomplete="name" placeholder="Your name" aria-label="Your name">
             <button class="open-btn" type="submit">Open letter 💌</button>
           </form>
           <p id="message" class="message" role="status" aria-live="polite"></p>
         </div>
-        <p class="credit">Made with love by your lucky boyfriend</p>
+        <p class="credit">Written with sincerity, courage, and a hopeful heart</p>
       </div>
     </section>
 
@@ -1427,59 +1428,12 @@
         <span>♡</span><span>❀</span><span>♡</span><span>✿</span><span>♡</span>
       </div>
       <article class="paper">
-        <div class="floral-corner floral-corner--top" aria-hidden="true">
-          <svg viewBox="0 0 180 180" role="img">
-            <path
-              d="M15 154C57 111 76 65 88 18M45 137c-7-18-3-35 13-48 8 20 3 37-13 48ZM66 98c1-20 12-34 32-41-1 21-12 35-32 41ZM87 57c7-18 21-29 42-30-7 19-21 29-42 30Z"
-              fill="none" stroke="#708c6b" stroke-width="4" stroke-linecap="round" />
-            <g fill="#d77a91">
-              <circle cx="33" cy="133" r="15" />
-              <circle cx="23" cy="126" r="10" />
-              <circle cx="43" cy="124" r="10" />
-              <circle cx="34" cy="116" r="10" />
-              <circle cx="34" cy="130" r="7" fill="#9c3f59" />
-            </g>
-            <g fill="#efb0bd">
-              <circle cx="92" cy="54" r="16" />
-              <circle cx="81" cy="48" r="10" />
-              <circle cx="102" cy="45" r="10" />
-              <circle cx="94" cy="36" r="10" />
-              <circle cx="92" cy="51" r="7" fill="#b95770" />
-            </g>
-            <circle cx="61" cy="96" r="7" fill="#f3c8a9" />
-            <circle cx="74" cy="85" r="5" fill="#f3c8a9" />
-          </svg>
-        </div>
-        <div class="floral-corner floral-corner--bottom" aria-hidden="true">
-          <svg viewBox="0 0 180 180" role="img">
-            <path
-              d="M15 154C57 111 76 65 88 18M45 137c-7-18-3-35 13-48 8 20 3 37-13 48ZM66 98c1-20 12-34 32-41-1 21-12 35-32 41ZM87 57c7-18 21-29 42-30-7 19-21 29-42 30Z"
-              fill="none" stroke="#708c6b" stroke-width="4" stroke-linecap="round" />
-            <g fill="#d77a91">
-              <circle cx="33" cy="133" r="15" />
-              <circle cx="23" cy="126" r="10" />
-              <circle cx="43" cy="124" r="10" />
-              <circle cx="34" cy="116" r="10" />
-              <circle cx="34" cy="130" r="7" fill="#9c3f59" />
-            </g>
-            <g fill="#efb0bd">
-              <circle cx="92" cy="54" r="16" />
-              <circle cx="81" cy="48" r="10" />
-              <circle cx="102" cy="45" r="10" />
-              <circle cx="94" cy="36" r="10" />
-              <circle cx="92" cy="51" r="7" fill="#b95770" />
-            </g>
-          </svg>
-        </div>
         <span class="tape" aria-hidden="true"></span>
         <header class="letter-top">
           <div>
-            <p class="kicker">Always and forever</p>
-            <h2 id="letterTitle">A letter for you</h2>
-            <p class="letter-date">August 21, 2026</p>
-          </div>
-          <div class="header-portrait" aria-hidden="true">
-            <img src="./image/313b9374-792f-4df7-a59f-a1dac76de555.jpg" alt="">
+            <p class="kicker">With honest intentions</p>
+            <h2 id="letterTitle">May I court you?</h2>
+            <p class="letter-date">October 12, 2026</p>
           </div>
           <div class="letter-meta">
             <div class="postmark" aria-hidden="true"><span><strong>♡</strong>Love mail</span></div>
@@ -1487,76 +1441,53 @@
               on</button>
           </div>
         </header>
-        <p id="salutation" class="salutation">Dear Baby,</p>
-        <div class="story-intro" aria-label="Our love story">
+        <p id="salutation" class="salutation">Dear Cy,</p>
+        <div class="story-intro" aria-label="A sincere letter">
           <span aria-hidden="true">01</span>
           <div>
-            <small>Our little story</small>
-            <strong>From one wrong send to always.</strong>
+            <small>A sincere letter</small>
+            <strong>May gusto lang akong sabihin sa'yo.</strong>
           </div>
         </div>
         <div class="letter-copy">
           <section class="chapter chapter--beginning">
             <header class="chapter-head"><span class="chapter-number">01</span>
-              <div><small>Where it started</small>
-                <h3>One unexpected message</h3>
+              <div><small>Why I am writing</small>
+                <h3>Para sa'yo, Cy</h3>
               </div>
             </header>
-            <p>Hello baby, gusto lang sabihin na salamat kasi nakita mo yung halaga na meron ako. Maliit para sa iba,
-              pero sa akin napakalaking bagay no'n.</p>
-            <p>Hindi ko akalain na magkakakilala tayo sa hindi pa inaasahang oras—hahaha, na wrong send lang. Tapos
-              nagdire-diretso na ang pag-uusap hanggang sa lumalim na, hanggang sa humantong na sa ligawan.</p>
+            <p>Hello, Cy. Matagal ko nang gustong sabihin ito sa'yo. Habang mas nakikilala kita, mas lalo kitang
+              nagugustuhan. Mabait ka, masaya kang kausap, at espesyal ka para sa akin.</p>
+            <p>Gusto pa kitang makilala. Gusto kong malaman ang mga gusto mo, mga pangarap mo, at mga bagay na
+              nagpapasaya sa'yo.</p>
           </section>
-          <figure class="story-photo story-photo--one">
-            <img src="./image/0eab07a5-302a-493e-b4b7-b8783fa83262.jpg" alt="A favorite photo of Lyanna" loading="lazy">
-            <figcaption>Your smile, my favorite sight. ♡</figcaption>
-          </figure>
-          <figure class="story-photo story-photo--two">
-            <img src="./image/313b9374-792f-4df7-a59f-a1dac76de555.jpg" alt="Lyanna in a white outfit" loading="lazy">
-            <figcaption>Beautiful in every little moment.</figcaption>
-          </figure>
           <section class="chapter chapter--everyday">
             <header class="chapter-head"><span class="chapter-number">02</span>
-              <div><small>What I adore</small>
-                <h3>All the little things</h3>
+              <div><small>What I want</small>
+                <h3>Gusto kitang ligawan</h3>
               </div>
             </header>
-            <p>Alam mo, napakaswerte ko sa'yo kasi napakabait mo. Sobrang understanding mong tao. Kahit na napakakulit
-              ng asawa mo na ito, ang haba pa rin ng pasensya mo. Isa rin 'yon sa nagustuhan ko sa'yo. Bukod sa maganda
-              at matalino ka, mahaba pa ang pasensya mo at masarap kang kausap.</p>
-            <p>Hindi ka nabo-boring kapag ako ang kausap, kahit na umaabot nang magdamagan ang usapan natin—hahaha.
-              Simula pagkagising sa umaga hanggang sa pagtulog ulit, magkausap tayo, at hindi ka nagsasawang kausapin
-              ako.</p>
-            <p>Hindi man laging marinig ang boses ko sa video call, nandiyan ka pa rin. Kahit hindi ako nagsasalita,
-              nandoon ka pa rin. Tapos ikaw na ang nagbibigay ng topic para mayroon tayong pag-usapan.</p>
+            <p>Kung papayagan mo ako, gusto kitang ligawan nang maayos. Hindi kita pipilitin at hindi kita mamadaliin.
+              Ire-respeto ko ang oras at desisyon mo.</p>
+            <p>Hindi ako perpekto, pero magiging totoo ako sa'yo. Makikinig ako, magiging consistent, at ipapakita ko
+              sa gawa na seryoso ako.</p>
           </section>
           <section class="chapter chapter--promise">
             <header class="chapter-head"><span class="chapter-number">03</span>
-              <div><small>My promise</small>
-                <h3>Always, in all ways</h3>
+              <div><small>My question</small>
+                <h3>Pwede ba kitang ligawan?</h3>
               </div>
             </header>
             <div class="chapter-body">
-              <p>I love you, baby! Sobrang mahal na mahal kita palagi. Huwag ka sanang mapagod sa akin, ha? Konting tiis
-                pa, baby. Tuparin natin ang promise natin sa isa't isa, okay?</p>
-              <p>Sana magustuhan mo itong letter ko. Ito lang ang kaya kong ibigay na letter sa'yo—hindi man sa papel,
-                pero kahit saan ay mabubuksan mo ito.</p>
+              <p>Hindi mo kailangang sumagot agad. Gusto ko lang malaman mo na seryoso ako sa'yo. Handa akong maghintay
+                at ipakita kung gaano kita pinapahalagahan.</p>
+              <p>Kaya ito ang gusto kong itanong: pwede ba kitang ligawan? Sana bigyan mo ako ng chance na mas makilala
+                ka at mapasaya ka.</p>
             </div>
           </section>
-          <div class="story-photo-stack" aria-label="More favorite photos">
-            <figure>
-              <img src="./image/960778f3-8cff-4f00-82e3-fcb0d5d36e3d.jpg" alt="Lyanna wearing a red cap" loading="lazy">
-              <figcaption>My favorite face.</figcaption>
-            </figure>
-            <figure>
-              <img src="./image/cb43bb55-777c-4d8e-a02c-f2f64588f5f9.jpg" alt="Another favorite photo of Lyanna"
-                loading="lazy">
-              <figcaption>My person, my home.</figcaption>
-            </figure>
-          </div>
-          <p class="final-love">I LOVE YOU, BABYYYYYYY! ♥</p>
+          <p class="final-love">Sana bigyan mo ako ng chance, Cy. ♡</p>
         </div>
-        <footer class="signature">Forever yours,<strong>Your lucky boyfriend ♥</strong></footer>
+        <footer class="signature">With sincere intentions,<strong>Your hopeful suitor ♡</strong></footer>
         <div class="letter-actions">
           <button id="closeLetterBtn" class="close-letter-btn" type="button">Close letter <span aria-hidden="true">♡</span></button>
         </div>
@@ -1571,7 +1502,7 @@
       <div class="closing-heart" aria-hidden="true">♥</div>
       <small>Until you open this again</small>
       <h3>Thank you.</h3>
-      <p>Thank you for reading my heart.<br><strong>I love you, always. ♡</strong></p>
+      <p>Thank you for hearing me out.<br><strong>I will respect whatever your answer may be. ♡</strong></p>
     </div>
   </div>
 
@@ -1579,7 +1510,7 @@
     <source src="./Dionela%20-%20Musika%20(Chorus%20Start).mp3" type="audio/mpeg">
   </audio>
   <script>
-    const allowedNames = ["princess", "cess", "baby", "sisay"];
+    const allowedNames = ["Cyrill", "cyrill", "Cy", "cy", "Cyrill Malabanan", "cyrill malabanan", "Cy Malabanan", "cy malabanan"];
     const form = document.getElementById("nameForm");
     const input = document.getElementById("userName");
     const message = document.getElementById("message");
@@ -1610,7 +1541,7 @@
 
     function openLetter(name) {
       startMusic();
-      salutation.textContent = "Dear Baby,";
+      salutation.textContent = "Dear Cy,";
       gate.classList.add("hidden");
       letterView.classList.add("open");
       letterView.setAttribute("aria-hidden", "false");
@@ -1675,7 +1606,7 @@
     });
 
     const revealItems = document.querySelectorAll(
-      ".header-portrait, .story-intro, .chapter, .story-photo, .story-photo-stack, .final-love, .signature"
+      ".story-intro, .chapter, .final-love, .signature"
     );
 
     revealItems.forEach(item => item.classList.add("reveal-item"));
