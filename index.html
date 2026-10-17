@@ -1818,12 +1818,11 @@
     </div>
   </div>
 
-  <audio id="bgMusic" preload="auto" loop>
-    <source src="./TJ%20Monterde%20-%20Palagi%20(Chorus).mp3#t=28,64" type="audio/mpeg">
+  <audio id="bgMusic" preload="auto">
+    <source src="./TJ%20Monterde%20-%20Palagi.mp3#t=28" type="audio/mpeg">
   </audio>
   <script>
     const SONG_START_TIME = 28;
-    const SONG_END_TIME = 64;
     const allowedNames = ["princess", "cess", "baby", "sisay", "lyanna", "paula"];
     const form = document.getElementById("nameForm");
     const input = document.getElementById("userName");
@@ -1888,7 +1887,7 @@
 
     musicBtn.addEventListener("click", () => {
       if (music.paused) {
-        if (music.currentTime < SONG_START_TIME || music.currentTime >= SONG_END_TIME) {
+        if (music.currentTime < SONG_START_TIME || music.ended) {
           music.currentTime = SONG_START_TIME;
         }
         music.play();
@@ -1901,10 +1900,9 @@
       }
     });
 
-    music.addEventListener("timeupdate", () => {
-      if (music.currentTime >= SONG_END_TIME) {
-        music.currentTime = SONG_START_TIME;
-      }
+    music.addEventListener("ended", () => {
+      music.currentTime = SONG_START_TIME;
+      music.play();
     });
 
     function returnToLanding() {
