@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#381922">
-  <title>May I Court You?</title>
+  <title>Happy Monthsary, Baby ♡</title>
   <style>
     :root {
       --wine: #7b2941;
@@ -163,12 +163,25 @@
     }
 
     .envelope h1 {
-      margin: 14px 0 12px;
+      margin: 6px 0 12px;
       color: var(--wine);
       font-size: clamp(2.55rem, 8vw, 4.15rem);
       font-weight: 500;
       line-height: .98;
       letter-spacing: -.035em;
+    }
+
+    .gate-bouquet {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: min(150px, 42vw);
+      max-height: 150px;
+      margin: -20px auto 2px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: drop-shadow(0 14px 18px rgba(76, 31, 39, .14));
+      animation: bouquetFloat 4s ease-in-out infinite;
     }
 
     .intro {
@@ -466,6 +479,86 @@
       object-position: center 34%;
     }
 
+    .monthsary-emblem {
+      position: relative;
+      display: grid;
+      min-height: 170px;
+      place-items: center;
+      padding: 24px;
+      border: 1px solid rgba(123, 41, 65, .12);
+      border-radius: 28px;
+      color: var(--wine);
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255,255,255,.9), transparent 24%),
+        linear-gradient(135deg, #f7dce4, #fff4ef);
+      box-shadow: 0 18px 44px rgba(78, 28, 42, .11);
+      text-align: center;
+      overflow: hidden;
+      transform: rotate(1deg);
+    }
+
+    .monthsary-emblem::before,
+    .monthsary-emblem::after {
+      position: absolute;
+      color: rgba(123, 41, 65, .1);
+      font-size: 5rem;
+      line-height: 1;
+    }
+
+    .monthsary-emblem::before { content: "♡"; top: -16px; left: -8px; }
+    .monthsary-emblem::after { content: "✿"; right: -5px; bottom: -18px; }
+
+    .monthsary-emblem strong,
+    .monthsary-emblem small {
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+
+    .monthsary-emblem strong {
+      font-size: 2.8rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .monthsary-emblem small {
+      margin-top: 8px;
+      font-family: var(--sans);
+      font-size: .67rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .monthsary-emblem img {
+      position: absolute;
+      inset: 4px;
+      width: calc(100% - 8px);
+      height: calc(100% - 8px);
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: saturate(.88) drop-shadow(0 12px 18px rgba(74, 35, 41, .14));
+    }
+
+    .monthsary-emblem span {
+      position: absolute;
+      z-index: 2;
+      right: 14px;
+      bottom: 12px;
+      left: 14px;
+      padding: 7px 10px;
+      border: 1px solid rgba(255, 255, 255, .55);
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(91, 30, 49, .72);
+      backdrop-filter: blur(8px);
+      font-family: var(--sans);
+      font-size: .64rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
     .postmark {
       display: grid;
       width: 78px;
@@ -619,17 +712,17 @@
     }
 
     .chapter--beginning {
-      grid-column: span 6;
+      grid-column: span 7;
       background: linear-gradient(145deg, rgba(255, 255, 255, .9), rgba(250, 232, 237, .72));
     }
 
     .chapter--everyday {
-      grid-column: span 6;
+      grid-column: span 8;
       background: linear-gradient(145deg, rgba(255, 250, 246, .94), rgba(255, 255, 255, .78));
     }
 
     .chapter--promise {
-      grid-column: 1 / -1;
+      grid-column: span 8;
       background: linear-gradient(135deg, rgba(245, 220, 227, .78), rgba(255, 250, 246, .9));
     }
 
@@ -830,6 +923,167 @@
       left: 12px;
       padding: 8px 6px;
       font-size: .66rem;
+    }
+
+    .bouquet-card {
+      position: relative;
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(220px, .72fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(20px, 5vw, 64px);
+      min-height: 300px;
+      padding: clamp(22px, 4vw, 42px);
+      border: 1px solid rgba(123, 41, 65, .12);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, .95), transparent 28%),
+        linear-gradient(135deg, #f7dce4, #fff8f1);
+      box-shadow: 0 18px 45px rgba(70, 25, 39, .09);
+      overflow: hidden;
+    }
+
+    .bouquet-card::after {
+      content: "♡";
+      position: absolute;
+      right: 24px;
+      bottom: -20px;
+      color: rgba(123, 41, 65, .09);
+      font-size: 8rem;
+      line-height: 1;
+    }
+
+    .bouquet-card img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      max-height: 260px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: drop-shadow(0 18px 24px rgba(74, 35, 41, .14));
+    }
+
+    .bouquet-card div {
+      position: relative;
+      z-index: 1;
+    }
+
+    .bouquet-card small {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--rose);
+      font-family: var(--sans);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .bouquet-card strong {
+      display: block;
+      max-width: 520px;
+      color: var(--wine);
+      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.12;
+    }
+
+    .bouquet-card p {
+      max-width: 560px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: .92rem;
+      line-height: 1.7;
+    }
+
+    .memory-note {
+      position: relative;
+      grid-column: span 5;
+      display: grid;
+      min-height: 330px;
+      place-items: center;
+      margin: 0;
+      padding: clamp(28px, 4vw, 52px);
+      border: 1px solid rgba(123, 41, 65, .1);
+      border-radius: 30px;
+      color: var(--wine-dark);
+      background:
+        radial-gradient(circle at 80% 18%, rgba(255,255,255,.9), transparent 26%),
+        linear-gradient(145deg, #f7dce4, #fff7f2);
+      box-shadow: 0 18px 45px rgba(70, 25, 39, .08);
+      text-align: center;
+      overflow: hidden;
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .memory-note--two {
+      grid-column: span 4;
+      background: linear-gradient(145deg, #fff4ec, #f6dce5);
+    }
+
+    .memory-note:hover,
+    .memory-note-stack article:hover {
+      transform: translateY(-5px) rotate(-.35deg);
+      box-shadow: 0 25px 55px rgba(70, 25, 39, .13);
+    }
+
+    .memory-note::before {
+      content: "♡";
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      color: rgba(123, 41, 65, .12);
+      font-size: 5rem;
+      line-height: 1;
+    }
+
+    .memory-note small,
+    .memory-note strong {
+      display: block;
+    }
+
+    .memory-note small {
+      margin-bottom: 14px;
+      color: var(--rose);
+      font-family: var(--sans);
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .memory-note strong {
+      max-width: 420px;
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.2;
+    }
+
+    .memory-note-stack {
+      grid-column: span 4;
+      display: grid;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .memory-note-stack article {
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      border: 1px solid rgba(123, 41, 65, .1);
+      border-radius: 24px;
+      color: var(--wine);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 14px 35px rgba(70, 25, 39, .07);
+      font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+      font-style: italic;
+      text-align: center;
+      transition: transform .35s ease, box-shadow .35s ease;
     }
 
     .memory-heading::before {
@@ -1130,7 +1384,8 @@
         grid-template-columns: minmax(0, 1fr) auto;
       }
 
-      .header-portrait {
+      .header-portrait,
+      .monthsary-emblem {
         display: none;
       }
 
@@ -1149,8 +1404,20 @@
       .story-photo,
       .story-photo--two,
       .story-photo-stack,
+      .memory-note,
+      .memory-note--two,
+      .memory-note-stack,
       .final-love {
         grid-column: 1;
+      }
+
+      .memory-note {
+        min-height: 230px;
+      }
+
+      .memory-note-stack {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: none;
       }
 
       .chapter--promise .chapter-body {
@@ -1159,6 +1426,22 @@
 
       .chapter--promise .chapter-body p {
         padding: 0 0 0 18px;
+      }
+
+      .bouquet-card {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .bouquet-card img {
+        max-height: 230px;
+      }
+
+      .bouquet-card strong,
+      .bouquet-card p {
+        margin-right: auto;
+        margin-left: auto;
       }
 
       .story-photo {
@@ -1401,6 +1684,11 @@
         transform: none;
       }
     }
+
+    @keyframes bouquetFloat {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-6px) rotate(1deg); }
+    }
   </style>
 </head>
 
@@ -1408,18 +1696,19 @@
   <main>
     <section id="gate" class="gate" aria-labelledby="gateTitle">
       <div class="envelope-wrap">
-        <p class="eyebrow">A sincere question from my heart</p>
+        <p class="eyebrow">A little celebration of us</p>
         <div class="envelope">
           <div class="seal" aria-hidden="true">♥</div>
-          <h1 id="gateTitle">For someone special</h1>
-          <p class="intro">May gusto sana akong sabihin sa'yo. Please input your nickname or first name.</p>
+          <img class="gate-bouquet" src="./image/flower-bouquet.png" alt="A bouquet of flowers for Baby">
+          <h1 id="gateTitle">For my Baby</h1>
+          <p class="intro">A special monthsary letter made just for you. Enter your nickname or first name to open it.</p>
           <form id="nameForm" class="name-field" novalidate>
             <input id="userName" type="text" autocomplete="name" placeholder="Your name" aria-label="Your name">
             <button class="open-btn" type="submit">Open letter 💌</button>
           </form>
           <p id="message" class="message" role="status" aria-live="polite"></p>
         </div>
-        <p class="credit">Written with sincerity, courage, and a hopeful heart</p>
+        <p class="credit">Made with love for our little milestone ♡</p>
       </div>
     </section>
 
@@ -1428,66 +1717,89 @@
         <span>♡</span><span>❀</span><span>♡</span><span>✿</span><span>♡</span>
       </div>
       <article class="paper">
-        <span class="tape" aria-hidden="true"></span>
+        <div class="floral-corner floral-corner--top" aria-hidden="true">
+          <svg viewBox="0 0 180 180"><path d="M15 154C57 111 76 65 88 18M45 137c-7-18-3-35 13-48 8 20 3 37-13 48ZM66 98c1-20 12-34 32-41-1 21-12 35-32 41Z" fill="none" stroke="#708c6b" stroke-width="4" stroke-linecap="round"/><g fill="#d77a91"><circle cx="33" cy="133" r="15"/><circle cx="23" cy="126" r="10"/><circle cx="43" cy="124" r="10"/><circle cx="34" cy="116" r="10"/><circle cx="34" cy="130" r="7" fill="#9c3f59"/></g><g fill="#efb0bd"><circle cx="92" cy="54" r="16"/><circle cx="81" cy="48" r="10"/><circle cx="102" cy="45" r="10"/><circle cx="94" cy="36" r="10"/><circle cx="92" cy="51" r="7" fill="#b95770"/></g></svg>
+        </div>
+        <div class="floral-corner floral-corner--bottom" aria-hidden="true">
+          <svg viewBox="0 0 180 180"><path d="M15 154C57 111 76 65 88 18M45 137c-7-18-3-35 13-48 8 20 3 37-13 48ZM66 98c1-20 12-34 32-41-1 21-12 35-32 41Z" fill="none" stroke="#708c6b" stroke-width="4" stroke-linecap="round"/><g fill="#d77a91"><circle cx="33" cy="133" r="15"/><circle cx="23" cy="126" r="10"/><circle cx="43" cy="124" r="10"/><circle cx="34" cy="116" r="10"/><circle cx="34" cy="130" r="7" fill="#9c3f59"/></g><g fill="#efb0bd"><circle cx="92" cy="54" r="16"/><circle cx="81" cy="48" r="10"/><circle cx="102" cy="45" r="10"/><circle cx="94" cy="36" r="10"/><circle cx="92" cy="51" r="7" fill="#b95770"/></g></svg>
+        </div>
         <header class="letter-top">
           <div>
-            <p class="kicker">With honest intentions</p>
-            <h2 id="letterTitle">May I court you?</h2>
-            <p class="letter-date">October 12, 2026</p>
+            <p class="kicker">Another month, another reason to love you</p>
+            <h2 id="letterTitle">Happy Monthsary, Baby</h2>
+            <p class="letter-date">A celebration of us ♡</p>
+          </div>
+          <div class="monthsary-emblem">
+            <img src="./image/flower-bouquet.png" alt="A bouquet of flowers">
+            <span>Flowers for my Baby</span>
           </div>
           <div class="letter-meta">
             <div class="postmark" aria-hidden="true"><span><strong>♡</strong>Love mail</span></div>
-            <button id="musicBtn" class="music-btn" type="button" aria-label="Pause background music">♫ Music
-              on</button>
+            <button id="musicBtn" class="music-btn" type="button" aria-label="Pause background music">♫ Music on</button>
           </div>
         </header>
-        <p id="salutation" class="salutation">Dear Cy,</p>
-        <div class="story-intro" aria-label="A sincere letter">
-          <span aria-hidden="true">01</span>
+        <p id="salutation" class="salutation">Dear Baby,</p>
+        <div class="story-intro" aria-label="Our monthsary letter">
+          <span aria-hidden="true">♡</span>
           <div>
-            <small>A sincere letter</small>
-            <strong>May gusto lang akong sabihin sa'yo.</strong>
+            <small>Our monthsary letter</small>
+            <strong>Mula sa isang wrong send hanggang sa tayo na ang paborito kong kuwento.</strong>
           </div>
         </div>
         <div class="letter-copy">
           <section class="chapter chapter--beginning">
             <header class="chapter-head"><span class="chapter-number">01</span>
-              <div><small>Why I am writing</small>
-                <h3>Para sa'yo, Cy</h3>
-              </div>
+              <div><small>How we began</small><h3>My favorite unexpected story</h3></div>
             </header>
-            <p>Hello, Cy. Matagal ko nang gustong sabihin ito sa'yo. Habang mas nakikilala kita, mas lalo kitang
-              nagugustuhan. Mabait ka, masaya kang kausap, at espesyal ka para sa akin.</p>
-            <p>Gusto pa kitang makilala. Gusto kong malaman ang mga gusto mo, mga pangarap mo, at mga bagay na
-              nagpapasaya sa'yo.</p>
+            <p>Hello, baby. Happy monthsary sa atin! Hanggang ngayon natutuwa pa rin ako kapag naaalala ko kung paano tayo nagsimula—isang wrong send lang, tapos tuloy-tuloy na ang usapan natin.</p>
+            <p>Hindi ko akalain na magiging parte ka ng araw-araw ko. Salamat kasi dumating ka at pinakita mo sa akin kung gaano kasarap magmahal at mahalin.</p>
           </section>
+          <figure class="story-photo" aria-label="A favorite photo of Baby">
+            <img src="./image/princess-blue.jpg" alt="Baby smiling in a blue outfit" loading="lazy">
+            <figcaption>Ang smile na hindi ko pagsasawaang tingnan. ♡</figcaption>
+          </figure>
+          <figure class="story-photo story-photo--two" aria-label="Baby outdoors">
+            <img src="./image/princess-outdoor.jpg" alt="Baby smiling outdoors" loading="lazy">
+            <figcaption>Ganda mo palagi, baby. ✿</figcaption>
+          </figure>
           <section class="chapter chapter--everyday">
             <header class="chapter-head"><span class="chapter-number">02</span>
-              <div><small>What I want</small>
-                <h3>Gusto kitang ligawan</h3>
-              </div>
+              <div><small>What I treasure</small><h3>Every ordinary day with you</h3></div>
             </header>
-            <p>Kung papayagan mo ako, gusto kitang ligawan nang maayos. Hindi kita pipilitin at hindi kita mamadaliin.
-              Ire-respeto ko ang oras at desisyon mo.</p>
-            <p>Hindi ako perpekto, pero magiging totoo ako sa'yo. Makikinig ako, magiging consistent, at ipapakita ko
-              sa gawa na seryoso ako.</p>
+            <p>Salamat kasi lagi mo akong iniintindi at hindi ka madaling mapagod sa akin. Sobrang swerte ko dahil mabait, matalino, at mahaba ang pasensya mo.</p>
+            <p>Paborito ko ang usapan natin mula umaga hanggang gabi. Kahit umaabot tayo nang madaling-araw, hindi ka pa rin nakakasawang kausap.</p>
+            <p>Kahit tahimik ako minsan sa video call, nandiyan ka pa rin. Sa mga simpleng oras na iyon, ramdam kong ikaw ang comfort at kakampi ko.</p>
           </section>
+          <aside class="bouquet-card" aria-label="Flowers for Baby">
+            <img src="./image/flower-bouquet.png" alt="A colorful bouquet of flowers for Baby" loading="lazy">
+            <div>
+              <small>A little flower surprise</small>
+              <strong>These flowers are for you, Baby.</strong>
+              <p>Because you deserve something beautiful today—and on every ordinary day we share.</p>
+            </div>
+          </aside>
           <section class="chapter chapter--promise">
             <header class="chapter-head"><span class="chapter-number">03</span>
-              <div><small>My question</small>
-                <h3>Pwede ba kitang ligawan?</h3>
-              </div>
+              <div><small>My promise to us</small><h3>I will keep choosing you</h3></div>
             </header>
             <div class="chapter-body">
-              <p>Hindi mo kailangang sumagot agad. Gusto ko lang malaman mo na seryoso ako sa'yo. Handa akong maghintay
-                at ipakita kung gaano kita pinapahalagahan.</p>
-              <p>Kaya ito ang gusto kong itanong: pwede ba kitang ligawan? Sana bigyan mo ako ng chance na mas makilala
-                ka at mapasaya ka.</p>
+              <p>Baby, ang dami na rin nating pinagdaanang ups and downs. May tampuhan, pagod, at minsan hindi tayo agad nagkakaintindihan.</p>
+              <p>Pero ang gusto ko sa atin, naaayos din natin agad. Nag-uusap tayo, nakikinig, at iniintindi natin ang isa't isa. Kaya lalo akong naniniwala sa atin at patuloy kitang pipiliin araw-araw.</p>
             </div>
           </section>
-          <p class="final-love">Sana bigyan mo ako ng chance, Cy. ♡</p>
+          <div class="story-photo-stack" aria-label="More favorite photos of Baby">
+            <figure>
+              <img src="./image/princess-wink.jpg" alt="Baby smiling and winking" loading="lazy">
+              <figcaption>My pretty baby ♡</figcaption>
+            </figure>
+            <figure>
+              <img src="./image/princess-night.jpg" alt="Baby during a special night out" loading="lazy">
+              <figcaption>Ikaw pa rin, palagi. ✿</figcaption>
+            </figure>
+          </div>
+          <p class="final-love">HAPPY MONTHSARY, BABY! MAHAL NA MAHAL KITA. ♥</p>
         </div>
-        <footer class="signature">With sincere intentions,<strong>Your hopeful suitor ♡</strong></footer>
+        <footer class="signature">Forever grateful for you,<strong>Your lucky boyfriend ♥</strong></footer>
         <div class="letter-actions">
           <button id="closeLetterBtn" class="close-letter-btn" type="button">Close letter <span aria-hidden="true">♡</span></button>
         </div>
@@ -1500,9 +1812,9 @@
       <span class="closing-sparkle one" aria-hidden="true">✿</span>
       <span class="closing-sparkle two" aria-hidden="true">♡</span>
       <div class="closing-heart" aria-hidden="true">♥</div>
-      <small>Until you open this again</small>
-      <h3>Thank you.</h3>
-      <p>Thank you for hearing me out.<br><strong>I will respect whatever your answer may be. ♡</strong></p>
+      <small>Until our next little milestone</small>
+      <h3>Thank you, Baby.</h3>
+      <p>Salamat sa pagpili sa atin araw-araw.<br><strong>I love you so much, baby. ♡</strong></p>
     </div>
   </div>
 
@@ -1510,7 +1822,7 @@
     <source src="./Dionela%20-%20Musika%20(Chorus%20Start).mp3" type="audio/mpeg">
   </audio>
   <script>
-    const allowedNames = ["Cyrill", "cyrill", "Cy", "cy", "Cyrill Malabanan", "cyrill malabanan", "Cy Malabanan", "cy malabanan"];
+    const allowedNames = ["princess", "cess", "baby", "sisay", "lyanna", "paula"];
     const form = document.getElementById("nameForm");
     const input = document.getElementById("userName");
     const message = document.getElementById("message");
@@ -1541,7 +1853,7 @@
 
     function openLetter(name) {
       startMusic();
-      salutation.textContent = "Dear Cy,";
+      salutation.textContent = "Dear Baby,";
       gate.classList.add("hidden");
       letterView.classList.add("open");
       letterView.setAttribute("aria-hidden", "false");
@@ -1553,7 +1865,7 @@
       event.preventDefault();
       const name = input.value.trim();
       if (!name || !allowedNames.includes(name.toLowerCase())) {
-        message.textContent = "This letter knows its person. Try your special name 😝";
+        message.textContent = "Para kay Baby lang ang letter na ito. Subukan ang special name mo ♡";
         input.focus();
         return;
       }
@@ -1606,7 +1918,7 @@
     });
 
     const revealItems = document.querySelectorAll(
-      ".story-intro, .chapter, .final-love, .signature"
+      ".monthsary-emblem, .story-intro, .chapter, .story-photo, .story-photo-stack, .bouquet-card, .final-love, .signature"
     );
 
     revealItems.forEach(item => item.classList.add("reveal-item"));
