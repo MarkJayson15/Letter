@@ -1819,9 +1819,11 @@
   </div>
 
   <audio id="bgMusic" preload="auto" loop>
-    <source src="./Dionela%20-%20Musika%20(Chorus%20Start).mp3" type="audio/mpeg">
+    <source src="./TJ%20Monterde%20-%20Palagi%20(Chorus).mp3#t=28,64" type="audio/mpeg">
   </audio>
   <script>
+    const SONG_START_TIME = 28;
+    const SONG_END_TIME = 64;
     const allowedNames = ["princess", "cess", "baby", "sisay", "lyanna", "paula"];
     const form = document.getElementById("nameForm");
     const input = document.getElementById("userName");
@@ -1838,7 +1840,14 @@
 
     function startMusic() {
       clearInterval(fadeTimer);
-      music.currentTime = 0;
+      const cueChorus = () => {
+        music.currentTime = SONG_START_TIME;
+      };
+      if (music.readyState >= 1) {
+        cueChorus();
+      } else {
+        music.addEventListener("loadedmetadata", cueChorus, { once: true });
+      }
       music.volume = 0;
       const playPromise = music.play();
       if (playPromise) playPromise.catch(() => {
@@ -1879,6 +1888,9 @@
 
     musicBtn.addEventListener("click", () => {
       if (music.paused) {
+        if (music.currentTime < SONG_START_TIME || music.currentTime >= SONG_END_TIME) {
+          music.currentTime = SONG_START_TIME;
+        }
         music.play();
         musicBtn.textContent = "♫ Music on";
         musicBtn.setAttribute("aria-label", "Pause background music");
@@ -1889,11 +1901,17 @@
       }
     });
 
+    music.addEventListener("timeupdate", () => {
+      if (music.currentTime >= SONG_END_TIME) {
+        music.currentTime = SONG_START_TIME;
+      }
+    });
+
     function returnToLanding() {
       clearTimeout(closeTimer);
       clearInterval(fadeTimer);
       music.pause();
-      music.currentTime = 0;
+      music.currentTime = SONG_START_TIME;
       music.volume = 1;
       musicBtn.textContent = "♫ Music on";
       musicBtn.setAttribute("aria-label", "Pause background music");
